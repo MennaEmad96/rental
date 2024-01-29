@@ -27,22 +27,17 @@
 			<!-- page content -->
 			<div class="right_col" role="main">
 				<div class="">
-					<div class="page-title">
-						@include('admin.includes.search')
+				<div class="page-title">
+					@include('admin.includes.search')
+				</div>
+				<div class="clearfix"></div>
+				<div class="row">
+					<div class="col-md-12 col-sm-12 ">
+					<div class="x_panel">
+						@yield('content')
 					</div>
-					<div class="clearfix"></div>
-					<div class="row">
-						<div class="col-md-12 col-sm-12 ">
-							<div class="x_panel">
-								<div class="x_title">
-									@include('admin.includes.secondaryTitle')
-								</div>
-								<div class="x_content">
-									@yield('content')
-								</div>
-							</div>
-						</div>
 					</div>
+				</div>
 				</div>
 			</div>
 			<!-- /page content -->

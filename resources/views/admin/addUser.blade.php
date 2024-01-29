@@ -1,4 +1,4 @@
-@extends('admin.layouts.adminAddPages')
+@extends('admin.layouts.adminFormPages')
 
 @section('title')
 Rent Car Admin | Add User

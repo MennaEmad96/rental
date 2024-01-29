@@ -1,21 +1,21 @@
 @extends('admin.layouts.adminFormPages')
 
 @section('title')
-    Rent Car Admin | Add Car
+	Rent Car Admin | Edit Testimonial
 @endsection
 
 @section('button')
-btn btn-default
+	btn btn-default
 @endsection
 
 @section('topTitle')
-    Manage Cars
+	Manage Testimonials
 @endsection
 
 @section('sideTitle')
-    Add Car
+    Edit Testimonial
 @endsection
 
 @section('content')
-    @include('admin.includes.carForm')
+	@include('admin.includes.testimonialForm')
 @endsection

@@ -17,6 +17,10 @@
 @endsection
 
 @section('content')
-    @include('admin.includes.carTable')
+    <div class="x_title">
+        @include('admin.includes.secondaryTitle')
+    </div>
+    <div class="x_content">
+        @include('admin.includes.carTable')
+    </div>
 @endsection
-

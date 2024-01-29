@@ -1,3 +1,4 @@
+<!-- route method value button -->
 <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
 
     <div class="item form-group">

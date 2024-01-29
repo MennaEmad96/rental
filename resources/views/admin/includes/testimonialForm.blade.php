@@ -1,3 +1,4 @@
+<!-- route method value image button -->
 <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
     <div class="item form-group">
         <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">Name <span class="required">*</span>
@@ -34,6 +35,7 @@
         </label>
         <div class="col-md-6 col-sm-6 ">
             <input type="file" id="image" name="image" required="required" class="form-control">
+            <img src="{{ asset('assets/images/car_1.jpg') }}" alt="" style="width: 300px;">
         </div>
     </div>
     <div class="ln_solid"></div>

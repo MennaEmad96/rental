@@ -28,4 +28,25 @@ Route::prefix('admin')->group(function () {
     Route::get('users', function () {
         return view('admin.users');
     })->name('users');
+    Route::get('messages', function () {
+        return view('admin.messages');
+    })->name('messages');
+
+    Route::get('editCar', function () {
+        return view('admin.editCar');
+    })->name('editCar');
+    Route::get('editCategory', function () {
+        return view('admin.editCategory');
+    })->name('editCategory');
+    Route::get('editTestimonial', function () {
+        return view('admin.editTestimonial');
+    })->name('editTestimonial');
+    Route::get('editUser', function () {
+        return view('admin.editUser');
+    })->name('editUser');
+
+    Route::get('showMessage', function () {
+        return view('admin.showMessage');
+    })->name('showMessage');
+    
 });
