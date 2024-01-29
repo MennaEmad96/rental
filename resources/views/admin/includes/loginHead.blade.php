@@ -7,13 +7,13 @@
 <title>Rent Car Admin | Login/Register</title>
 
 <!-- Bootstrap -->
-<link href="{{ asset('assets/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ asset('assets/admin/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
 <!-- Font Awesome -->
-<link href="{{ asset('assets/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+<link href="{{ asset('assets/admin/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
 <!-- NProgress -->
-<link href="{{ asset('assets/vendors/nprogress/nprogress.css') }}" rel="stylesheet">
+<link href="{{ asset('assets/admin/vendors/nprogress/nprogress.css') }}" rel="stylesheet">
 <!-- Animate.css -->
-<link href="{{ asset('assets/vendors/animate.css/animate.min.css') }}" rel="stylesheet">
+<link href="{{ asset('assets/admin/vendors/animate.css/animate.min.css') }}" rel="stylesheet">
 
 <!-- Custom Theme Style -->
-<link href="{{ asset('assets/build/css/custom.min.css') }}" rel="stylesheet">
+<link href="{{ asset('assets/admin/build/css/custom.min.css') }}" rel="stylesheet">
