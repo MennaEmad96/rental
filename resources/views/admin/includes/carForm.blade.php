@@ -1,4 +1,5 @@
 <!-- route method value image button -->
+<!-- value="{{ old('name'), $teacher->name ?? '' }}" -->
 <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
     <div class="item form-group">
         <label class="col-form-label col-md-3 col-sm-3 label-align" for="title">Title <span class="required">*</span>
