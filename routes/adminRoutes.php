@@ -49,7 +49,4 @@ Route::prefix('admin')->group(function () {
         return view('admin.showMessage');
     })->name('showMessage');
 
-    Route::get('login', function () {
-        return view('admin.login');
-    })->name('login');
 });

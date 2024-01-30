@@ -28,3 +28,5 @@ Route::get('testimonials',[PageController::class,'testimonials'])->name('testimo
 Route::get('single',[PageController::class,'single'])->name('single');
 
 
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
