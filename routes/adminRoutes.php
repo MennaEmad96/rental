@@ -2,16 +2,26 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CarController;
+
 Route::prefix('admin')->group(function () {
+
+    //category
+    Route::get('categories',[CategoryController::class,'index'])->name('categories');
+    Route::get('addCategory',[CategoryController::class,'create'])->name('addCategory');
+    Route::post('storeCategory',[CategoryController::class,'store'])->name('storeCategory');
+    Route::get('editCategory/{id}',[CategoryController::class,'edit'])->name('editCategory');
+    Route::put('updateCategory/{id}',[CategoryController::class,'update'])->name('updateCategory');
+    Route::get('deleteCategory/{id}',[CategoryController::class,'destroy'])->name('deleteCategory');
+
     Route::get('addCar', function () {
         return view('admin.addCar');
     })->name('addCar');
-    Route::get('addCategory', function () {
-        return view('admin.addCategory');
-    })->name('addCategory');
-    Route::get('addTestimonials', function () {
-        return view('admin.addTestimonials');
-    })->name('addTestimonials');
+
+    Route::get('addTestimonial', function () {
+        return view('admin.addTestimonial');
+    })->name('addTestimonial');
     Route::get('addUser', function () {
         return view('admin.addUser');
     })->name('addUser');
@@ -19,12 +29,9 @@ Route::prefix('admin')->group(function () {
     Route::get('cars', function () {
         return view('admin.cars');
     })->name('cars');
-    Route::get('categories', function () {
-        return view('admin.categories');
-    })->name('categories');
     Route::get('testimonials', function () {
         return view('admin.testimonials');
-    })->name('testimonials');
+    })->name('allTestimonials');
     Route::get('users', function () {
         return view('admin.users');
     })->name('users');
@@ -35,9 +42,6 @@ Route::prefix('admin')->group(function () {
     Route::get('editCar', function () {
         return view('admin.editCar');
     })->name('editCar');
-    Route::get('editCategory', function () {
-        return view('admin.editCategory');
-    })->name('editCategory');
     Route::get('editTestimonial', function () {
         return view('admin.editTestimonial');
     })->name('editTestimonial');
