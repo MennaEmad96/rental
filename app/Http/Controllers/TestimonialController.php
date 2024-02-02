@@ -60,7 +60,8 @@ class TestimonialController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $testimonial = DB::table('testimonials')->where('id', $id)->first();
+        return view('admin.testimonial.editTestimonial', compact("testimonial"));
     }
 
     /**
@@ -68,7 +69,22 @@ class TestimonialController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = $request->validate([
+            'name'=>'required|string|max:50',
+            'content'=>'required|string|max:1000',
+            'image' => 'sometimes|mimes:png,jpg,jpeg|max:2048',
+            'position' => 'required|string|max:50',
+        ]);
+        if($request->hasFile('image')){
+            //use method from traits called uploadFile
+            $fileName = $this->uploadFile($request->image, 'assets/admin/testimonialImages');
+            $data['image'] = $fileName;
+            //remove old image from server
+            unlink("assets/admin/testimonialImages/".$request->oldImageName);
+        }
+        $data['published'] = isset($request->published);
+        Testimonial::where('id', $id)->update($data);
+        return redirect('admin/testimonials');
     }
 
     /**

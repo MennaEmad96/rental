@@ -7,25 +7,26 @@
 </div>
 <div class="row">
     <div class="col-lg-8 mb-5" >
-    <form action="#" method="post">
+    <form action="{{ route('storeMessage') }}" method="post">
+        @csrf
         <div class="form-group row">
         <div class="col-md-6 mb-4 mb-lg-0">
-            <input type="text" class="form-control" placeholder="First name">
+            <input name="firstName" value="{{ old('firstName') }}" type="text" class="form-control" placeholder="First name">
         </div>
         <div class="col-md-6">
-            <input type="text" class="form-control" placeholder="Last name">
+            <input name="lastName" value="{{ old('lastName') }}" type="text" class="form-control" placeholder="Last name">
         </div>
         </div>
 
         <div class="form-group row">
         <div class="col-md-12">
-            <input type="text" class="form-control" placeholder="Email address">
+            <input name="email" value="{{ old('email') }}" type="email" class="form-control" placeholder="Email address">
         </div>
         </div>
 
         <div class="form-group row">
         <div class="col-md-12">
-            <textarea name="" id="" class="form-control" placeholder="Write your message." cols="30" rows="10"></textarea>
+            <textarea name="content" id="" class="form-control" placeholder="Write your message." cols="30" rows="10">{{ old('content') }}</textarea>
         </div>
         </div>
         <div class="form-group row">

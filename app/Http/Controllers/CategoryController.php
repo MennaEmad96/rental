@@ -62,7 +62,7 @@ class CategoryController extends Controller
     public function update(Request $request, string $id)
     {
         $data = $request->validate([
-            'name'=>'required|string|max:50',
+            'name'=>'required|string|max:50,'.$id,
         ]);        
         DB::update('UPDATE `categories` SET `name` = ? WHERE `id` = ?',[$data['name'], $id]);
         return redirect('admin/categories');

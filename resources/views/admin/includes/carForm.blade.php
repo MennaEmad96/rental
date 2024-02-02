@@ -1,4 +1,4 @@
-<!-- cancel error -->
+<!-- cancel, old image value with add and edit -->
 @if(isset($car))
 <form action="{{ route('updateCar', ['id'=>$car->id]) }}" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" enctype="multipart/form-data">
     @method('put')
@@ -56,7 +56,7 @@
     <div class="item form-group">
         <label for="price" class="col-form-label col-md-3 col-sm-3 label-align">Price <span class="required">*</span></label>
         <div class="col-md-6 col-sm-6 ">
-            <input id="price" class="form-control" type="number" name="price" value="{{ isset($car) ? $car->price : old('price') }}" required="required">
+            <input id="price" class="form-control" type="number" step="0.01" name="price" value="{{ isset($car) ? $car->price : old('price') }}" required="required">
         </div>
         @error('price')
             {{ $message }}
@@ -88,8 +88,10 @@
         <label class="col-form-label col-md-3 col-sm-3 label-align" for="title">Category <span class="required">*</span>
         </label>
         <div class="col-md-6 col-sm-6 ">
-            <select class="form-control" name="category_id" id="">
+            <select class="form-control" name="category_id" id="" required>
+                @if(!isset($car))
                 <option value="">Select Category</option>
+                @endif
                 @foreach($categories as $category)
                 <option value="{{ $category->id }}" {{ (isset($car) && $car->category_id == $category->id) || old('category_id') == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                 @endforeach

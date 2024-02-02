@@ -13,86 +13,16 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach($users as $user)
                 <tr>
-                    <td>1 Jan 2023</td>
-                    <td>Tony Adam</td>
-                    <td>tony2023</td>
-                    <td>tony@gmail.com</td>
-                    <td>Yes</td>
-                    <td><img src="{{ asset('assets/admin/images/edit.png') }}" alt="Edit"></td>
+                    <td>{{ date('d M Y', strtotime($user->created_at)) }}</td>
+                    <td>{{ $user->fullName }}</td>
+                    <td>{{ $user->userName }}</td>
+                    <td>{{ $user->email }}</td>
+                    <td>{{ $user->active ? "Yes" : "No" }}</td>
+                    <td><a href="{{ route('editUser', ['id'=>$user->id]) }}"><img src="{{ asset('assets/admin/images/edit.png') }}" alt="Edit"></a></td>
                 </tr>
-                <tr>
-                    <td>1 Jan 2023</td>
-                    <td>Tony Adam</td>
-                    <td>tony2023</td>
-                    <td>tony@gmail.com</td>
-                    <td>Yes</td>
-                    <td><img src="{{ asset('assets/admin/images/edit.png') }}" alt="Edit"></td>
-                </tr>
-                <tr>
-                    <td>1 Jan 2023</td>
-                    <td>Tony Adam</td>
-                    <td>tony2023</td>
-                    <td>tony@gmail.com</td>
-                    <td>Yes</td>
-                    <td><img src="{{ asset('assets/admin/images/edit.png') }}" alt="Edit"></td>
-                </tr>
-                <tr>
-                    <td>1 Jan 2023</td>
-                    <td>Tony Adam</td>
-                    <td>tony2023</td>
-                    <td>tony@gmail.com</td>
-                    <td>Yes</td>
-                    <td><img src="{{ asset('assets/admin/images/edit.png') }}" alt="Edit"></td>
-                </tr>
-                <tr>
-                    <td>1 Jan 2023</td>
-                    <td>Tony Adam</td>
-                    <td>tony2023</td>
-                    <td>tony@gmail.com</td>
-                    <td>Yes</td>
-                    <td><img src="{{ asset('assets/admin/images/edit.png') }}" alt="Edit"></td>
-                </tr>
-                <tr>
-                    <td>1 Jan 2023</td>
-                    <td>Tony Adam</td>
-                    <td>tony2023</td>
-                    <td>tony@gmail.com</td>
-                    <td>Yes</td>
-                    <td><img src="{{ asset('assets/admin/images/edit.png') }}" alt="Edit"></td>
-                </tr>
-                <tr>
-                    <td>1 Jan 2023</td>
-                    <td>Tony Adam</td>
-                    <td>tony2023</td>
-                    <td>tony@gmail.com</td>
-                    <td>Yes</td>
-                    <td><img src="{{ asset('assets/admin/images/edit.png') }}" alt="Edit"></td>
-                </tr>
-                <tr>
-                    <td>1 Jan 2023</td>
-                    <td>Tony Adam</td>
-                    <td>tony2023</td>
-                    <td>tony@gmail.com</td>
-                    <td>Yes</td>
-                    <td><img src="{{ asset('assets/admin/images/edit.png') }}" alt="Edit"></td>
-                </tr>
-                <tr>
-                    <td>1 Jan 2023</td>
-                    <td>Tony Adam</td>
-                    <td>tony2023</td>
-                    <td>tony@gmail.com</td>
-                    <td>Yes</td>
-                    <td><img src="{{ asset('assets/admin/images/edit.png') }}" alt="Edit"></td>
-                </tr>
-                <tr>
-                    <td>1 Jan 2023</td>
-                    <td>Tony Adam</td>
-                    <td>tony2023</td>
-                    <td>tony@gmail.com</td>
-                    <td>Yes</td>
-                    <td><img src="{{ asset('assets/admin/images/edit.png') }}" alt="Edit"></td>
-                </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

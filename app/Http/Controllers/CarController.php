@@ -79,10 +79,9 @@ class CarController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        return dd($request);
         $messages=$this->messages();
         $data = $request->validate([
-            'title'=>'required|string',
+            'title'=>'required|string,'.$id,
             'price'=>'required|numeric',
             'luggages'=>'required|numeric',
             'doors'=>'required|numeric',

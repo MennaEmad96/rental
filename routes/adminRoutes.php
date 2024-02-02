@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\MessageController;
 
 Route::prefix('admin')->group(function () {
 
@@ -32,23 +34,17 @@ Route::prefix('admin')->group(function () {
     Route::put('updateTestimonial/{id}',[TestimonialController::class,'update'])->name('updateTestimonial');
     Route::get('deleteTestimonial/{id}',[TestimonialController::class,'destroy'])->name('deleteTestimonial');
 
-    Route::get('addUser', function () {
-        return view('admin.addUser');
-    })->name('addUser');
+    //user
+    Route::get('users',[UserController::class,'index'])->name('users');
+    Route::get('addUser',[UserController::class,'create'])->name('addUser');
+    Route::post('storeUser',[UserController::class,'store'])->name('storeUser');
+    Route::get('editUser/{id}',[UserController::class,'edit'])->name('editUser');
+    Route::put('updateUser/{id}',[UserController::class,'update'])->name('updateUser');
 
-    Route::get('users', function () {
-        return view('admin.users');
-    })->name('users');
-    Route::get('messages', function () {
-        return view('admin.messages');
-    })->name('messages');
-
-    Route::get('editUser', function () {
-        return view('admin.editUser');
-    })->name('editUser');
-
-    Route::get('showMessage', function () {
-        return view('admin.showMessage');
-    })->name('showMessage');
+    //message
+    Route::get('messages',[MessageController::class,'index'])->name('messages');
+    Route::get('showMessage/{id}',[MessageController::class,'show'])->name('showMessage');
+    Route::get('deleteMessage/{id}',[MessageController::class,'destroy'])->name('deleteMessage');
+    Route::post('storeMessage',[MessageController::class,'store'])->name('storeMessage');
 
 });
