@@ -15,9 +15,15 @@ Route::prefix('admin')->group(function () {
     Route::put('updateCategory/{id}',[CategoryController::class,'update'])->name('updateCategory');
     Route::get('deleteCategory/{id}',[CategoryController::class,'destroy'])->name('deleteCategory');
 
-    Route::get('addCar', function () {
-        return view('admin.addCar');
-    })->name('addCar');
+    //car
+    Route::get('cars',[CarController::class,'index'])->name('cars');
+    Route::get('addCar',[CarController::class,'create'])->name('addCar');
+    Route::post('storeCar',[CarController::class,'store'])->name('storeCar');
+    Route::get('editCar/{id}',[CarController::class,'edit'])->name('editCar');
+    Route::put('updateCar/{id}',[CarController::class,'update'])->name('updateCar');
+    Route::get('deleteCar/{id}',[CarController::class,'destroy'])->name('deleteCar');
+
+
 
     Route::get('addTestimonial', function () {
         return view('admin.addTestimonial');
@@ -26,9 +32,6 @@ Route::prefix('admin')->group(function () {
         return view('admin.addUser');
     })->name('addUser');
 
-    Route::get('cars', function () {
-        return view('admin.cars');
-    })->name('cars');
     Route::get('testimonials', function () {
         return view('admin.testimonials');
     })->name('allTestimonials');
@@ -39,9 +42,6 @@ Route::prefix('admin')->group(function () {
         return view('admin.messages');
     })->name('messages');
 
-    Route::get('editCar', function () {
-        return view('admin.editCar');
-    })->name('editCar');
     Route::get('editTestimonial', function () {
         return view('admin.editTestimonial');
     })->name('editTestimonial');

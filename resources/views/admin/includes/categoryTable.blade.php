@@ -14,7 +14,7 @@
                     <tr>
                         <td>{{ $category->name }}</td>
                         <td><a href="{{ route('editCategory', ['id'=>$category->id]) }}"><img src="{{ asset('assets/admin/images/edit.png') }}" alt="Edit"></a></td>
-                        <td><a href="{{ route('deleteCategory', ['id'=>$category->id]) }}"><img src="{{ asset('assets/admin/images/delete.png') }}" alt="Delete"></a></td>
+                        <td><a onclick="return confirm('Are you sure?')" href="{{ route('deleteCategory', ['id'=>$category->id]) }}"><img src="{{ asset('assets/admin/images/delete.png') }}" alt="Delete"></a></td>
                     </tr>
                     @endforeach
                 </tbody>

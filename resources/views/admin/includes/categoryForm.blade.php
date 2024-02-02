@@ -1,3 +1,4 @@
+<!-- cancel -->
 @if(isset($category))
 <form action="{{ route('updateCategory', ['id'=>$category->id]) }}" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
     @method('put')
@@ -11,6 +12,9 @@
         <div class="col-md-6 col-sm-6 ">
             <input name="name" value="{{ isset($category) ? $category->name : old('name') }}" type="text" id="add-category" required="required" class="form-control ">
         </div>
+        @error('name')
+            {{ $message }}
+        @enderror
     </div>
     
     <div class="ln_solid"></div>

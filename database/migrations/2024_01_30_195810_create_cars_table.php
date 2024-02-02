@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('cars', function (Blueprint $table) {
             $table->id();
             $table->string('title',100)->unique();
-            $table->integer('price');
+            $table->float('price');
             $table->tinyinteger('luggages');
             $table->tinyinteger('doors');
             $table->tinyinteger('passengers');
