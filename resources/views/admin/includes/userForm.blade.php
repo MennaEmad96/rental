@@ -48,6 +48,7 @@
         </label>
         <div class="col-md-6 col-sm-6 ">
             <input name="password" value="{{ isset($user) ? $user->password : old('password') }}" type="password" id="password" required="required" class="form-control">
+            <input name="oldPassword" value="{{ isset($user) ? $user->password : '' }}" type="hidden">
         </div>
         @error('password')
             {{ $message }}
@@ -56,7 +57,7 @@
     <div class="ln_solid"></div>
     <div class="item form-group">
         <div class="col-md-6 col-sm-6 offset-md-3">
-            <button class="btn btn-primary" type="button">Cancel</button>
+            <a href="{{ route('users') }}"><button class="btn btn-primary" type="button">Cancel</button></a>
             <button type="submit" class="btn btn-success">{{ isset($user) ? "Update" : "Add" }}</button>
         </div>
     </div>

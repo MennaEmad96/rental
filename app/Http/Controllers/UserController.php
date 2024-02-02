@@ -36,7 +36,8 @@ class UserController extends Controller
         $data = $request->validate([
             'fullName'=>'required|string|max:50',
             'userName'=>'required|string|max:50|unique:users,userName',
-            'password'=>'required|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/',
+            // 'password'=>'required|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/',
+            'password'=>'required|string|min:8',
             'email'=>'required|email|unique:users,email',
         ], $messages);
         $data['password'] = Hash::make($data['password']);
@@ -71,7 +72,7 @@ class UserController extends Controller
         $data = $request->validate([
             'fullName'=>'required|string|max:50',
             'userName'=>'required|string|max:50|unique:users,userName,'.$id,
-            'password'=>'required|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/',
+            'password'=>'required|string|min:8',
             'email'=>'required|email|unique:users,email,'.$id,
         ], $messages);
         $data['password'] = Hash::make($data['password']);

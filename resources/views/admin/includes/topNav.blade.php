@@ -27,11 +27,25 @@
                 <ul class="dropdown-menu list-unstyled msg_list" role="menu" aria-labelledby="navbarDropdown1">
                     @foreach($unreadMessages as $message)
                     <li class="nav-item">
-                        <a class="dropdown-item">
+                        <a href="{{ route('showMessage', ['id'=>$message->id]) }}" class="dropdown-item">
                             <span class="image"><img src="{{ asset('assets/admin/images/img.jpg') }}" alt="Profile Image" /></span>
                             <span>
                                 <span>{{ $message->firstName }} {{ $message->lastName }}</span>
-                                <span class="time">3 mins ago</span>
+                                <?php
+                                    $timeAgo = $message->created_at->diffInMinutes(\Carbon\Carbon::now());
+                                    // less than one hour
+                                    if($timeAgo < 60){
+                                        $timeAgo = $message->created_at->diffInMinutes(\Carbon\Carbon::now()) . " Minutes Ago";
+                                    }// less than one day
+                                    elseif($timeAgo > 60 && $timeAgo < 1440){
+                                        $timeAgo = $message->created_at->diffInHours(\Carbon\Carbon::now()) . " Hours Ago";
+                                    }// in days
+                                    else{
+                                        $timeAgo = $message->created_at->diffInDays(\Carbon\Carbon::now()) . " Days Ago";
+                                    }
+                                ?>
+                                
+                                <span class="time">{{ $timeAgo }}</span>
                             </span>
                             <span class="message">
                                 {{ Str::limit($message->content, 80) }}
