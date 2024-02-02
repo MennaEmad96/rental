@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\TestimonialController;
 
 Route::prefix('admin')->group(function () {
 
@@ -23,18 +24,18 @@ Route::prefix('admin')->group(function () {
     Route::put('updateCar/{id}',[CarController::class,'update'])->name('updateCar');
     Route::get('deleteCar/{id}',[CarController::class,'destroy'])->name('deleteCar');
 
+    //testimonial
+    Route::get('testimonials',[TestimonialController::class,'index'])->name('allTestimonials');
+    Route::get('addTestimonial',[TestimonialController::class,'create'])->name('addTestimonial');
+    Route::post('storeTestimonial',[TestimonialController::class,'store'])->name('storeTestimonial');
+    Route::get('editTestimonial/{id}',[TestimonialController::class,'edit'])->name('editTestimonial');
+    Route::put('updateTestimonial/{id}',[TestimonialController::class,'update'])->name('updateTestimonial');
+    Route::get('deleteTestimonial/{id}',[TestimonialController::class,'destroy'])->name('deleteTestimonial');
 
-
-    Route::get('addTestimonial', function () {
-        return view('admin.addTestimonial');
-    })->name('addTestimonial');
     Route::get('addUser', function () {
         return view('admin.addUser');
     })->name('addUser');
 
-    Route::get('testimonials', function () {
-        return view('admin.testimonials');
-    })->name('allTestimonials');
     Route::get('users', function () {
         return view('admin.users');
     })->name('users');
@@ -42,9 +43,6 @@ Route::prefix('admin')->group(function () {
         return view('admin.messages');
     })->name('messages');
 
-    Route::get('editTestimonial', function () {
-        return view('admin.editTestimonial');
-    })->name('editTestimonial');
     Route::get('editUser', function () {
         return view('admin.editUser');
     })->name('editUser');
