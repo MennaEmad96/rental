@@ -7,6 +7,7 @@ use App\Models\Car;
 use App\Models\Category;
 use App\Traits\Common;
 use DB;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CarController extends Controller
 {
@@ -52,7 +53,7 @@ class CarController extends Controller
         $data['image']=$fileName;
         $data['active'] = isset($request->active);
         Car::create($data);
-        return redirect('admin/cars');
+        return redirect('admin/cars')->with('success','Data stored sucssefully');
     }
 
     /**
@@ -99,7 +100,7 @@ class CarController extends Controller
         }
         $data['active'] = isset($request->active);
         Car::where('id', $id)->update($data);
-        return redirect('admin/cars');
+        return redirect('admin/cars')->with('success','Data updated sucssefully');
     }
 
     /**
@@ -111,7 +112,7 @@ class CarController extends Controller
         $sql="DELETE FROM `cars` WHERE `id` = $id";
         DB::delete($sql);
         unlink("assets/admin/carImages/".$imageName->image);
-        return redirect('admin/cars');
+        return redirect('admin/cars')->with('success','Data deleted sucssefully');
     }
 
     public function messages()

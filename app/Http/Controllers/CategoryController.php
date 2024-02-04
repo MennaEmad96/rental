@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Car;
 use DB;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CategoryController extends Controller
 {
@@ -36,7 +37,7 @@ class CategoryController extends Controller
             'name'=>'required|string|max:50',
         ]);
         Category::create($data);
-        return redirect('admin/categories');
+        return redirect('admin/categories')->with('success','Data stored sucssefully');
     }
 
     /**
@@ -65,7 +66,7 @@ class CategoryController extends Controller
             'name'=>'required|string|max:50,'.$id,
         ]);        
         DB::update('UPDATE `categories` SET `name` = ? WHERE `id` = ?',[$data['name'], $id]);
-        return redirect('admin/categories');
+        return redirect('admin/categories')->with('success','Data updated sucssefully');
     }
 
     /**
@@ -75,23 +76,11 @@ class CategoryController extends Controller
     {
         $found = DB::table('cars')->where('category_id', $id)->count();
         if($found){
-            return dd("ok");
+            return back()->with('error','Category is linked to a car.');
         }else{
             DB::table('categories')->where('id', $id)->delete();
-            return redirect('admin/categories');
+            return back()->with('success','Category deleted successfully');
+            // return redirect('admin/categories')->with('success','Category deleted successfully');
         }
-    }
-
-    public function messages()
-    {
-        return [
-            'title.required'=>'العنوان مطلوب',
-            'title.string'=>'Should be string',
-            'description.required'=>'Should be text',
-            'image.required'=>'Please be sure to select an image',
-            'image.mimes'=>'Incorrect image type',
-            'image.max'=>'Max file size exeeced',
-            'category_id.exists'=>'Choose category whithin our given categories',
-        ];
     }
 }

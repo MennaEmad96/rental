@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use DB;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
@@ -43,7 +44,7 @@ class UserController extends Controller
         $data['password'] = Hash::make($data['password']);
         $data['active'] = isset($request->active);
         User::create($data);
-        return redirect('admin/users');
+        return redirect('admin/users')->with('success','Data stored sucssefully');
     }
 
     /**
@@ -78,7 +79,7 @@ class UserController extends Controller
         $data['password'] = Hash::make($data['password']);
         $data['active'] = isset($request->active);
         User::where('id', $id)->update($data);
-        return redirect('admin/users');
+        return redirect('admin/users')->with('success','Data updated sucssefully');
     }
 
     /**

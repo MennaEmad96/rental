@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
         //Or write the code here without extar files
         View::composer('admin.includes.topNav', function ($view) {
             $unreadMessagesCount = Message::where('isRead', 0)->count();
-            $unreadMessages = Message::where('isRead', 0)->orderBy('id', 'desc')->get();
+            $unreadMessages = Message::where('isRead', 0)->orderBy('id', 'desc')->take(3)->get();
             //session
             $view->with([
                 'unreadMessagesCount' => $unreadMessagesCount,

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Message;
 use DB;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class MessageController extends Controller
 {
@@ -38,7 +39,7 @@ class MessageController extends Controller
             'content'=>'required|string|max:1000',
         ]);
         Message::create($data);
-        return back();
+        return back()->with('success','Message sent sucssefully');
     }
 
     /**
@@ -73,6 +74,6 @@ class MessageController extends Controller
     public function destroy(string $id)
     {
         DB::table('messages')->where('id', $id)->delete();
-        return redirect('admin/messages');
+        return redirect('admin/messages')->with('success','Data deleted sucssefully');
     }
 }

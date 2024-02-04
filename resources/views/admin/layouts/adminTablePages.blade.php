@@ -69,5 +69,7 @@
     <script src="{{ asset('assets/admin/vendors/pdfmake/build/pdfmake.min.js') }}"></script>
     <script src="{{ asset('assets/admin/vendors/pdfmake/build/vfs_fonts.js') }}"></script>
 
+	@include('sweetalert::alert')
+
 </body>
 </html>

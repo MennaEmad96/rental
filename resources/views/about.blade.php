@@ -12,8 +12,6 @@
     @include('includes.sideTitle')
 @endsection
 
-
-
 @section('content')
 <!-- company start -->
 <div class="site-section">
