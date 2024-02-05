@@ -31,12 +31,12 @@
                     {{ $message }}
                 @enderror
             </div>
-            <div>
+            <!-- <div>
                 <input name="password_confirmation" value="{{ old('password_confirmation') }}" type="password" class="form-control" placeholder="Password Confirmation" required="" />
                 @error('password_confirmation')
                     {{ $message }}
                 @enderror
-            </div>
+            </div> -->
             <div>
                 <a class="btn btn-default submit" href="{{ route('register') }}" onclick="event.preventDefault(); document.getElementById('registerForm').submit();">Submit</a>
             </div>

@@ -43,12 +43,6 @@ class LoginController extends Controller
     }
 
     public function credentials(Request $request){
-        // $sql = "SELECT `active` FROM `users` WHERE `userName` = ?";
-        // $ifActive = DB::select($sql, [$request->email]);
-        // result: $ifActive[0]->active
-        $ifActive = DB::table('users')->select('active')->where('userName', $request->email)->first();
-        // result: $ifActive->active
-
         //login using userName
         return ['userName'=>$request->email, 'password'=>$request->password, 'active'=>1];
         //login using email or userName

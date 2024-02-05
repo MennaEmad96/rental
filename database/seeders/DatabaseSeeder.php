@@ -19,9 +19,9 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(3)->create();
         // Category::factory(5)->create();
-        // Car::factory(5)->create();
+        Car::factory(30)->create();
         // Testimonial::factory(5)->create();
-        Message::factory(10)->create();
+        // Message::factory(10)->create();
 
 
         // \App\Models\User::factory()->create([

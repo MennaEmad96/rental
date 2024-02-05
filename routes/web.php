@@ -23,12 +23,10 @@ Route::get('/', function () {
 Route::get('index',[PageController::class,'index'])->name('index');
 Route::get('about',[PageController::class,'about'])->name('about');
 Route::get('blog',[PageController::class,'blog'])->name('blog');
-Route::get('listing',[PageController::class,'listing'])->name('listing');
+Route::get('listing/{id?}',[PageController::class,'listing'])->name('listing');
 Route::get('contact',[PageController::class,'contact'])->name('contact');
 Route::get('testimonials',[PageController::class,'testimonials'])->name('testimonials');
-Route::get('single',[PageController::class,'single'])->name('single');
-
-Auth::routes(['verify'=>true]);
+Route::get('single/{id}',[PageController::class,'single'])->name('single');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

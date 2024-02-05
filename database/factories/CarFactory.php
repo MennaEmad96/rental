@@ -20,7 +20,7 @@ class CarFactory extends Factory
         $fakerFileName = $this->faker->image("public/assets/admin/carImages", 500, 400);
 
         return [
-            'title' => fake()->word(),
+            'title' => fake()->firstName(),
             'price' => fake()->randomFloat(99.99, 1000000.99, 9898.11, 109000000.9),
             'luggages' => fake()->numberBetween(2,15),
             'doors' => fake()->numberBetween(1,8),

@@ -19,7 +19,7 @@
           @enderror
         </div>
         <div>
-          <button class="btn btn-default submit" href="{{ route('login') }}" onclick="event.preventDefault(); document.getElementById('loginForm').submit();">Log in</button>
+          <a class="btn btn-default submit" href="{{ route('login') }}" onclick="event.preventDefault(); document.getElementById('loginForm').submit();">Log in</a>
           <a class="reset_pass" href="#">Lost your password?</a>
         </div>
 

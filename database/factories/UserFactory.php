@@ -14,7 +14,10 @@ class UserFactory extends Factory
     /**
      * The current password being used by the factory.
      */
-    protected static ?string $password;
+
+    // Generate password I know:
+    // 1) comment this line
+    // protected static ?string $password;
 
     /**
      * Define the model's default state.
@@ -23,6 +26,8 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        // 2) add a password variable with it's value
+        $password = "00000000";
         $fname = fake()->firstName();
         $lname = fake()->lastName();
         return [
@@ -30,7 +35,9 @@ class UserFactory extends Factory
             'userName' => $fname.'_'.$lname.fake()->numberBetween(20, 30),
             'email' => $fname.'_'.$lname.'@gmail.com',
             'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
+            // 3) remove static from this line
+            // 'password' => static::$password ??= Hash::make('password'),
+            'password' => $password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
             'active' => fake()->numberBetween(0, 1),
         ];
