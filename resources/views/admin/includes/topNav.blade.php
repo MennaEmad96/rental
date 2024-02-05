@@ -36,15 +36,29 @@
                                 <span>{{ $message->firstName }} {{ $message->lastName }}</span>
                                 <?php
                                     $timeAgo = $message->created_at->diffInMinutes(\Carbon\Carbon::now());
+                                    $timeAgoHours = $message->created_at->diffInHours(\Carbon\Carbon::now());
+                                    $timeAgoDays = $message->created_at->diffInDays(\Carbon\Carbon::now());
                                     // less than one hour
                                     if($timeAgo < 60){
-                                        $timeAgo = $message->created_at->diffInMinutes(\Carbon\Carbon::now()) . " Minutes Ago";
+                                        if($timeAgo == 1){
+                                            $timeAgo = $timeAgo . " Minute Ago";
+                                        }else{
+                                            $timeAgo = $timeAgo . " Minutes Ago";
+                                        }
                                     }// less than one day
                                     elseif($timeAgo > 60 && $timeAgo < 1440){
-                                        $timeAgo = $message->created_at->diffInHours(\Carbon\Carbon::now()) . " Hours Ago";
+                                        if($timeAgoHours == 1){
+                                            $timeAgo = $timeAgoHours . " Hour Ago";
+                                        }else{
+                                            $timeAgo = $timeAgoHours . " Hours Ago";
+                                        }
                                     }// in days
                                     else{
-                                        $timeAgo = $message->created_at->diffInDays(\Carbon\Carbon::now()) . " Days Ago";
+                                        if($timeAgoDays == 1){
+                                            $timeAgo = $timeAgoDays . " Day Ago";
+                                        }else{
+                                            $timeAgo = $timeAgoDays . " Days Ago";
+                                        }
                                     }
                                 ?>
                                 

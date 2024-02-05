@@ -3,7 +3,7 @@
 @section('content')
   <div class="animate form login_form">
     <section class="login_content">
-      <form method="POST" action="{{ route('login') }}">
+      <form method="POST" action="{{ route('login') }}" id="loginForm">
         @csrf
         <h1>Login Form</h1>
         <div>
@@ -19,7 +19,7 @@
           @enderror
         </div>
         <div>
-          <button class="btn btn-default submit" href="">Log in</button>
+          <button class="btn btn-default submit" href="{{ route('login') }}" onclick="event.preventDefault(); document.getElementById('loginForm').submit();">Log in</button>
           <a class="reset_pass" href="#">Lost your password?</a>
         </div>
 

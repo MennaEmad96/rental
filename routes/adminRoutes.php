@@ -8,7 +8,11 @@ use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MessageController;
 
-Route::prefix('admin')->group(function () {
+// Route::prefix('admin')->group(function () {
+
+Route::group(['prefix' => 'admin',  'middleware' => ['verified']], function(){
+
+    
 
     //category
     Route::get('categories',[CategoryController::class,'index'])->name('categories');

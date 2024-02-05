@@ -28,8 +28,11 @@ Route::get('contact',[PageController::class,'contact'])->name('contact');
 Route::get('testimonials',[PageController::class,'testimonials'])->name('testimonials');
 Route::get('single',[PageController::class,'single'])->name('single');
 
+Auth::routes(['verify'=>true]);
 
-Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Route::get('logout', [LoginController::class,'logout'])->name('logout');;
+// Route::get('logout', [LoginController::class,'logout'])->name('logout');
+Route::get('logout', function () {
+    return redirect('admin/login');
+})->name('logout');

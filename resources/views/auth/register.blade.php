@@ -4,7 +4,7 @@
     <!-- <div id="register" class="animate form registration_form"> -->
     <div id="register" class="animate form">
         <section class="login_content">
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('register') }}" id="registerForm">
             @csrf
             <h1>Create Account</h1>
             <div>
@@ -38,7 +38,7 @@
                 @enderror
             </div>
             <div>
-                <button class="btn btn-default submit" href="">Submit</button>
+                <a class="btn btn-default submit" href="{{ route('register') }}" onclick="event.preventDefault(); document.getElementById('registerForm').submit();">Submit</a>
             </div>
 
             <div class="clearfix"></div>
