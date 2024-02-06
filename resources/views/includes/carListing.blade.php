@@ -48,8 +48,12 @@
         <div class="col-5">
         <div class="custom-pagination">
             @for($i = 1; $i <= $totalPages; $i++)
-            <a href="{{ route('listing', ['page' => $i]) }}">{{ $i }}</a>
-            <!-- <span>2</span> -->
+                <!-- no pafe was selected, then select first -->
+                @if(request()->input('page') == $i || (request()->input('page') == null && $i == 1))
+                    <span>{{ $i }}</span>
+                @else
+                    <a href="{{ route('listing', ['page' => $i]) }}">{{ $i }}</a>
+                @endif
             @endfor
         </div>
         </div>

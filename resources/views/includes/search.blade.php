@@ -8,18 +8,20 @@
         </div>
     </div>
     
-    <form class="trip-form">
-
+    <form action="{{ route('listingSearch') }}" method="post" class="trip-form">
+        @csrf
         <div class="row align-items-center">
         
         <div class="mb-3 mb-md-0 col-md-3">
-            <select name="" id="" class="custom-select form-control">
+            <select name="category" id="" class="custom-select form-control">
             <option value="">Select Type</option>
-            <option value="">Ferrari</option>
-            <option value="">Toyota</option>
-            <option value="">Ford</option>
-            <option value="">Lamborghini</option>
+            @foreach($categories as $category)
+            <option value="{{ $category->id }}">{{ $category->name }}</option>
+            @endforeach
             </select>
+            @error('category')
+            {{ $message }}
+        @enderror
         </div>
         <div class="mb-3 mb-md-0 col-md-3">
             <div class="form-control-wrap">

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Message;
 use DB;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Mail\ContactMail;
+use Illuminate\Support\Facades\Mail;
 
 class MessageController extends Controller
 {
@@ -39,6 +41,9 @@ class MessageController extends Controller
             'content'=>'required|string|max:1000',
         ]);
         Message::create($data);
+
+        Mail::to('eng_peter_elias@gmail.com')->send(new ContactMail($data));
+
         return back()->with('success','Message sent sucssefully');
     }
 

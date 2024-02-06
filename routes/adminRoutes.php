@@ -48,6 +48,5 @@ Route::group(['prefix' => 'admin',  'middleware' => ['verified']], function(){
     Route::get('messages',[MessageController::class,'index'])->name('messages');
     Route::get('showMessage/{id}',[MessageController::class,'show'])->name('showMessage');
     Route::get('deleteMessage/{id}',[MessageController::class,'destroy'])->name('deleteMessage');
-    Route::post('storeMessage',[MessageController::class,'store'])->name('storeMessage');
 
 });

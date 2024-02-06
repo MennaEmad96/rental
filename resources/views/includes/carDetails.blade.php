@@ -67,5 +67,5 @@
 <p class="lead">{{ $car->content }}</p>
 
 <div class="pt-5">
-    <p>Category:  <a href="#">{{ $car->category->name }}</a></p>
+    <p>Category:  <a href="{{ route('listing',['id'=>$car->category->id]) }}">{{ $car->category->name }}</a></p>
 </div>
