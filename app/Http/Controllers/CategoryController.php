@@ -37,7 +37,7 @@ class CategoryController extends Controller
             'name'=>'required|string|max:50',
         ]);
         Category::create($data);
-        return redirect('admin/categories')->with('success','Data stored sucssefully');
+        return redirect('admin/categories')->with('toast_success','Data stored sucssefully');
     }
 
     /**
@@ -66,7 +66,7 @@ class CategoryController extends Controller
             'name'=>'required|string|max:50,'.$id,
         ]);        
         DB::update('UPDATE `categories` SET `name` = ? WHERE `id` = ?',[$data['name'], $id]);
-        return redirect('admin/categories')->with('success','Data updated sucssefully');
+        return redirect('admin/categories')->with('toast_success','Data updated sucssefully');
     }
 
     /**
@@ -76,10 +76,10 @@ class CategoryController extends Controller
     {
         $found = DB::table('cars')->where('category_id', $id)->count();
         if($found){
-            return back()->with('error','Category is linked to a car.');
+            return back()->with('toast_error','Category is linked to a car.');
         }else{
             DB::table('categories')->where('id', $id)->delete();
-            return back()->with('success','Category deleted successfully');
+            return back()->with('toast_success','Category deleted successfully');
             // return redirect('admin/categories')->with('success','Category deleted successfully');
         }
     }

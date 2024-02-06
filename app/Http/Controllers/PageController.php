@@ -17,10 +17,10 @@ class PageController extends Controller
         $testimonials = DB::select($sql);
         $sql = "SELECT categories.name, categories.id FROM cars INNER JOIN categories ON cars.category_id = categories.id AND cars.active = 1 GROUP BY categories.name, categories.id";
         $categories = DB::select($sql);
+        //not to use pagination of testimonial in home page
         $totalPages = 0;
         return view("index", compact("cars", "testimonials", "categories", "totalPages"));
     }
-
     public function about(){
         return view("about");
     }
@@ -55,6 +55,7 @@ class PageController extends Controller
 
         return view("listing", compact("cars", "totalPages", "testimonials"));
     }
+    //cars of same category from home page search 
     public function listingSearch(Request $request){
         $messages=$this->messages();
         $data = $request->validate([
@@ -84,7 +85,6 @@ class PageController extends Controller
         $car = Car::findOrFail($id);
         $categories = DB::select("SELECT categories.name, COUNT(*) AS num, categories.id FROM cars INNER JOIN categories ON cars.category_id = categories.id AND cars.active = 1 GROUP BY categories.name, categories.id");
         return view("single", compact("car", "categories"));
-
     }
 
     public function messages()

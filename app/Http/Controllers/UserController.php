@@ -44,7 +44,7 @@ class UserController extends Controller
         $data['password'] = Hash::make($data['password']);
         $data['active'] = isset($request->active);
         User::create($data);
-        return redirect('admin/users')->with('success','Data stored sucssefully');
+        return redirect('admin/users')->with('toast_success','Data stored sucssefully');
     }
 
     /**
@@ -79,7 +79,7 @@ class UserController extends Controller
         $data['password'] = Hash::make($data['password']);
         $data['active'] = isset($request->active);
         User::where('id', $id)->update($data);
-        return redirect('admin/users')->with('success','Data updated sucssefully');
+        return redirect('admin/users')->with('toast_success','Data updated sucssefully');
     }
 
     /**

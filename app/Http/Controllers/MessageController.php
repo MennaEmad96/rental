@@ -79,6 +79,6 @@ class MessageController extends Controller
     public function destroy(string $id)
     {
         DB::table('messages')->where('id', $id)->delete();
-        return redirect('admin/messages')->with('success','Data deleted sucssefully');
+        return redirect('admin/messages')->with('toast_success','Data deleted sucssefully');
     }
 }

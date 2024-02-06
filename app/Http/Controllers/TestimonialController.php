@@ -45,7 +45,7 @@ class TestimonialController extends Controller
         $data['published'] = isset($request->published);
         $data['image'] = $fileName;
         Testimonial::create($data);
-        return redirect('admin/testimonials')->with('success','Data stored sucssefully');
+        return redirect('admin/testimonials')->with('toast_success','Data stored sucssefully');
     }
 
     /**
@@ -85,7 +85,7 @@ class TestimonialController extends Controller
         }
         $data['published'] = isset($request->published);
         Testimonial::where('id', $id)->update($data);
-        return redirect('admin/testimonials')->with('success','Data updated sucssefully');
+        return redirect('admin/testimonials')->with('toast_success','Data updated sucssefully');
     }
 
     /**
@@ -97,6 +97,6 @@ class TestimonialController extends Controller
         $sql="DELETE FROM `testimonials` WHERE `id` = $id";
         DB::delete($sql);
         unlink("assets/admin/testimonialImages/".$imageName->image);
-        return redirect('admin/testimonials')->with('success','Data deleted sucssefully');
+        return redirect('admin/testimonials')->with('toast_success','Data deleted sucssefully');
     }
 }

@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use DB;
 
+// logout
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
+
 class LoginController extends Controller
 {
     /*
@@ -52,14 +56,17 @@ class LoginController extends Controller
         //     return ['userName'=>$request->email, 'password'=>$request->password, 'active'=>1];
         // }
     }
-
-    protected function authenticated(Request $request, $user)
+ 
+    /**
+     * Log the user out of the application.
+     */
+    public function logout(Request $request): RedirectResponse
     {
-        if (!$user->active) {
-            Auth::logout(); // Logout the user
-            return redirect()->back()->with('error', 'Your account is not active.');
-        }
-
-        return redirect()->intended($this->redirectPath());
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('admin/login');
     }
+
+    
 }

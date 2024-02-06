@@ -20,8 +20,8 @@
             @endforeach
             </select>
             @error('category')
-            {{ $message }}
-        @enderror
+                {{ $message }}
+            @enderror
         </div>
         <div class="mb-3 mb-md-0 col-md-3">
             <div class="form-control-wrap">
