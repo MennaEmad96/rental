@@ -22,7 +22,8 @@ class TestimonialFactory extends Factory
         return [
             'name' => fake()->firstName() . " " . fake()->lastName(),
             'position' => fake()->word(),
-            'content' => fake()->text(),
+            // 'content' => fake()->sentence(50),
+            'content' => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, sapiente.",
             //save image name into database
             'image' => basename($fakerFileName),
             'published' => fake()->numberBetween(0, 1),
