@@ -26,7 +26,8 @@ class TestimonialFactory extends Factory
             'content' => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, sapiente.",
             //save image name into database
             'image' => basename($fakerFileName),
-            'published' => fake()->numberBetween(0, 1),
+            // 'published' => fake()->numberBetween(0, 1),
+            'published' => 1,
         ];
     }
 }

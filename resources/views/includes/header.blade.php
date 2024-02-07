@@ -2,7 +2,7 @@
     <div class="row align-items-center position-relative">
         <div class="col-3">
         <div class="site-logo">
-            <a href="{{route('index')}}"><strong>CarRental</strong></a>
+            <a href="{{ route('index') }}"><strong>CarRental</strong></a>
         </div>
         </div>
 

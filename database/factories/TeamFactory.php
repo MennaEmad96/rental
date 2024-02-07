@@ -25,7 +25,8 @@ class TeamFactory extends Factory
             'content' => fake()->text(),
             //save image name into database
             'image' => basename($fakerFileName),
-            'published' => fake()->numberBetween(0, 1),
+            // 'published' => fake()->numberBetween(0, 1),
+            'published' => 1,
         ];
     }
 }

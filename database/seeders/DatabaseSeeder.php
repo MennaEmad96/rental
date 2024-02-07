@@ -18,12 +18,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(3)->create();
-        Category::factory(5)->create();
-        Car::factory(30)->create();
-        Testimonial::factory(15)->create();
-        Team::factory(15)->create();
-        Message::factory(10)->create();
+        User::factory(2)->create();
+        Category::factory(3)->create();
+        Car::factory(15)->create();
+        Testimonial::factory(6)->create();
+        Team::factory(6)->create();
+        Message::factory(3)->create();
 
 
         // \App\Models\User::factory()->create([

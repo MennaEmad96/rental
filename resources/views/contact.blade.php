@@ -18,15 +18,7 @@
     @include('includes.contactUs')
 </div>
 <!-- contact end -->
+
+@include('sweetalert::alert')
+
 @endsection
-
-<!doctype html>
-<html lang="en">
-
-
-
-
-    
-
-    
-

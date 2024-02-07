@@ -28,8 +28,9 @@ class CarFactory extends Factory
             'content' => fake()->text(),
             //save image name into database
             'image' => basename($fakerFileName),
-            'active' => fake()->numberBetween(0, 1),
-            'category_id' => fake()->numberBetween(1, 5),
+            // 'active' => fake()->numberBetween(0, 1),
+            'active' => 1,
+            'category_id' => fake()->numberBetween(1, 3),
         ];
     }
 }

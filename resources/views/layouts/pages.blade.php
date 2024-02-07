@@ -45,8 +45,6 @@
     @include('includes.js')
     <!-- js end -->
 
-    @include('sweetalert::alert')
-
   </body>
 
 </html>

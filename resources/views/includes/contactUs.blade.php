@@ -13,21 +13,33 @@
         <div class="col-md-6 mb-4 mb-lg-0">
             <input name="firstName" value="{{ old('firstName') }}" type="text" class="form-control" placeholder="First name">
         </div>
+        @error('firstName')
+            {{ $message }}
+        @enderror
         <div class="col-md-6">
             <input name="lastName" value="{{ old('lastName') }}" type="text" class="form-control" placeholder="Last name">
         </div>
+        @error('lastName')
+            {{ $message }}
+        @enderror
         </div>
 
         <div class="form-group row">
         <div class="col-md-12">
             <input name="email" value="{{ old('email') }}" type="email" class="form-control" placeholder="Email address">
         </div>
+        @error('email')
+            {{ $message }}
+        @enderror
         </div>
 
         <div class="form-group row">
         <div class="col-md-12">
             <textarea name="content" id="" class="form-control" placeholder="Write your message." cols="30" rows="10">{{ old('content') }}</textarea>
         </div>
+        @error('content')
+            {{ $message }}
+        @enderror
         </div>
         <div class="form-group row">
         <div class="col-md-6 mr-auto">
