@@ -5,13 +5,14 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
+//custom error message for inactive user
+use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
 use App\Models\User;
 use DB;
 
-// logout
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Auth;
+
+
 
 class LoginController extends Controller
 {
@@ -57,4 +58,40 @@ class LoginController extends Controller
         // }
     }
     
+    protected function sendFailedLoginResponse(Request $request)
+    {
+        // return dd($this->username());
+        //result: "email"
+        //if user is active, this code won't be executed
+        $ifActive = DB::table('users')->select('active')->where('userName', $request->email)->first();
+        // result: $ifActive->active
+        //if user is not active, return with customized message
+        if($ifActive->active == 0){
+            throw ValidationException::withMessages([
+                $this->username() => [trans('auth.active')],
+            ]);
+        }else{
+            throw ValidationException::withMessages([
+                $this->username() => [trans('auth.failed')],
+            ]);
+        }
+    }
+
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        if ($response = $this->loggedOut($request)) {
+            return $response;
+        }
+
+        //after logout redirect to login
+        return $request->wantsJson()
+            ? new JsonResponse([], 204)
+            : redirect('admin/login');
+    }
 }
