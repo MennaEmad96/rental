@@ -58,7 +58,6 @@ class LoginController extends Controller
         // }
     }
     
-<<<<<<< HEAD
     protected function sendFailedLoginResponse(Request $request)
     {
         // return dd($this->username());
@@ -95,6 +94,4 @@ class LoginController extends Controller
             ? new JsonResponse([], 204)
             : redirect('admin/login');
     }
-=======
->>>>>>> baae5f5911910aa206146fd6e5c244c093920dc6
 }
