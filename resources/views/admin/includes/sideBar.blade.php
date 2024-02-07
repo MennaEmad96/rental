@@ -48,6 +48,12 @@
                     <li><a href="{{route ('addTestimonial') }}">Add Testimonials</a></li>
                 </ul>
             </li>
+            <li><a><i class="fa fa-desktop"></i> Teams <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="{{route ('teams') }}">Teams List</a></li>
+                    <li><a href="{{route ('addTeam') }}">Add Team</a></li>
+                </ul>
+            </li>
             <li><a><i class="fa fa-desktop"></i> Messages <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                     <li><a href="{{ route('messages') }}">Messages</a></li>

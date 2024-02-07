@@ -7,6 +7,7 @@ use App\Http\Controllers\CarController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\TeamController;
 
 Route::prefix('admin')->group(function () {
     Auth::routes(['verify'=>true]);
@@ -48,5 +49,13 @@ Route::group(['prefix' => 'admin',  'middleware' => ['verified']], function(){
     Route::get('messages',[MessageController::class,'index'])->name('messages');
     Route::get('showMessage/{id}',[MessageController::class,'show'])->name('showMessage');
     Route::get('deleteMessage/{id}',[MessageController::class,'destroy'])->name('deleteMessage');
+
+    //team
+    Route::get('teams',[TeamController::class,'index'])->name('teams');
+    Route::get('addTeam',[TeamController::class,'create'])->name('addTeam');
+    Route::post('storeTeam',[TeamController::class,'store'])->name('storeTeam');
+    Route::get('editTeam/{id}',[TeamController::class,'edit'])->name('editTeam');
+    Route::put('updateTeam/{id}',[TeamController::class,'update'])->name('updateTeam');
+    Route::get('deleteTeam/{id}',[TeamController::class,'destroy'])->name('deleteTeam');
 
 });

@@ -21,7 +21,7 @@
 
 <!-- team start -->
 <div class="site-section bg-light">
-    @include('includes.team')
+    @include('includes.teams')
 </div>
 <!-- team end -->
 

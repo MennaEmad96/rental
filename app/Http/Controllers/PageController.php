@@ -22,7 +22,9 @@ class PageController extends Controller
         return view("index", compact("cars", "testimonials", "categories", "totalPages"));
     }
     public function about(){
-        return view("about");
+        $sql = "SELECT `id`, `name`, `position`, LEFT (`content`, 73) AS `content`, `image` FROM `teams` WHERE `published` = 1 ORDER BY ID DESC LIMIT 6";
+        $teams = DB::select($sql);
+        return view("about", compact("teams"));
     }
     public function blog(){
         return view("blog");

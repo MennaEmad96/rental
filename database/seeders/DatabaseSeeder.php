@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Car;
 use App\Models\Testimonial;
 use App\Models\Message;
+use App\Models\Team;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,11 +18,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(3)->create();
-        // Category::factory(5)->create();
+        User::factory(3)->create();
+        Category::factory(5)->create();
         Car::factory(30)->create();
-        // Testimonial::factory(5)->create();
-        // Message::factory(10)->create();
+        Testimonial::factory(5)->create();
+        Team::factory(15)->create();
+        Message::factory(10)->create();
 
 
         // \App\Models\User::factory()->create([
