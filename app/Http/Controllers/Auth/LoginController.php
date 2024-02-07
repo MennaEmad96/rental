@@ -56,17 +56,5 @@ class LoginController extends Controller
         //     return ['userName'=>$request->email, 'password'=>$request->password, 'active'=>1];
         // }
     }
- 
-    /**
-     * Log the user out of the application.
-     */
-    public function logout(Request $request): RedirectResponse
-    {
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect('admin/login');
-    }
-
     
 }

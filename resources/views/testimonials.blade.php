@@ -24,8 +24,6 @@
         </div>
         <div class="row">
             @include('includes.testimonials')
-            @include('includes.testimonials')
-            @include('includes.testimonials')
         </div>
     </div>
 </div>

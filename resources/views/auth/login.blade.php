@@ -1,5 +1,9 @@
 @extends('layouts.appCar')
 
+@section('title')
+  Login
+@endsection
+
 @section('content')
   <div class="animate form login_form">
     <section class="login_content">
@@ -7,13 +11,13 @@
         @csrf
         <h1>Login Form</h1>
         <div>
-          <input name="email" value="{{ old('email') }}" type="text" class="form-control" placeholder="username" required="" />
+          <input name="email" value="{{ old('email') }}" type="text" class="form-control" placeholder="username" required="" title="Please enter your username"/>
           @error('email')
             {{ $message }}
           @enderror
         </div>
         <div>
-          <input name="password" value="{{ old('password') }}" type="password" class="form-control" placeholder="Password" required="" />
+          <input name="password" value="{{ old('password') }}" type="password" class="form-control" placeholder="Password" required="" title="Please enter your password"/>
           @error('password')
             {{ $message }}
           @enderror

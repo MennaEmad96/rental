@@ -1,5 +1,9 @@
 @extends('layouts.appCar')
 
+@section('title')
+    Register
+@endsection
+
 @section('content')
     <!-- <div id="register" class="animate form registration_form"> -->
     <div id="register" class="animate form">
