@@ -7,6 +7,8 @@ use App\Models\Category;
 use DB;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Route;
+
 
 class PageController extends Controller
 {
@@ -83,14 +85,25 @@ class PageController extends Controller
         return view("testimonials", compact("testimonials"));
     }
     public function single(string $id){
+        //returns an error with $car->category->id
+        // $sql = "SELECT * FROM `cars` WHERE `id` = $id";
+        // $car = DB::select($sql);
+        // $car = $car[0];
         // $car = DB::table('cars')->where('id', $id)->first();
-        $car = Car::findOrFail($id);
-        $categories = DB::select("SELECT categories.name, COUNT(*) AS num, categories.id FROM cars INNER JOIN categories ON cars.category_id = categories.id AND cars.active = 1 GROUP BY categories.name, categories.id");
-        return view("single", compact("car", "categories"));
+        $car = Car::find($id);
+        if($car == null){
+            return view("404");
+        }else{
+            $categories = DB::select("SELECT categories.name, COUNT(*) AS num, categories.id FROM cars INNER JOIN categories ON cars.category_id = categories.id AND cars.active = 1 GROUP BY categories.name, categories.id");
+            return view("single", compact("car", "categories"));
+        }
     }
 
-    public function messages()
-    {
+    public function __invoke(){
+        return view('404');
+    }
+
+    public function messages(){
         return [
             'category.exists'=>'Choose category whithin our given categories',
         ];

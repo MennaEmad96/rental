@@ -82,7 +82,7 @@ class CarController extends Controller
     {
         $messages=$this->messages();
         $data = $request->validate([
-            'title'=>'required|string,'.$id,
+            'title'=>'required|string|unique:cars,title,'.$id,
             'price'=>'required|numeric',
             'luggages'=>'required|numeric',
             'doors'=>'required|numeric',

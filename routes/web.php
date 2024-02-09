@@ -16,9 +16,9 @@ use App\Http\Controllers\MessageController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 //page routes
 Route::get('index',[PageController::class,'index'])->name('index');
@@ -31,5 +31,7 @@ Route::get('contact',[PageController::class,'contact'])->name('contact');
 Route::post('storeMessage',[MessageController::class,'store'])->name('storeMessage');
 Route::get('testimonials',[PageController::class,'testimonials'])->name('testimonials');
 Route::get('single/{id}',[PageController::class,'single'])->name('single');
+
+Route::fallback(PageController::class)->name('404');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

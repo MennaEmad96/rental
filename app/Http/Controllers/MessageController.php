@@ -38,7 +38,7 @@ class MessageController extends Controller
             'firstName'=>'required|string|max:50',
             'lastName'=>'required|string|max:50',
             'email'=>'required|email',
-            'content'=>'required|string|max:1000',
+            'content'=>'required|string',
         ]);
         Message::create($data);
 

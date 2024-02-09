@@ -65,8 +65,8 @@ class LoginController extends Controller
         //if user is active, this code won't be executed
         $ifActive = DB::table('users')->select('active')->where('userName', $request->email)->first();
         // result: $ifActive->active
-        //if user is not active, return with customized message
-        if($ifActive->active == 0){
+        //if user is registered but not active, return with customized message
+        if(isset($ifActive) && $ifActive->active == 0){
             throw ValidationException::withMessages([
                 $this->username() => [trans('auth.active')],
             ]);
