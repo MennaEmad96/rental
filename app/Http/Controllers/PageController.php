@@ -36,10 +36,16 @@ class PageController extends Controller
         if(isset($id)){
             // $sql = "SELECT `id`, `title`, `price`, `luggages`, `doors`, `passengers`, LEFT (`content`, 96) AS `content`, `image`, `category_id` FROM `cars` WHERE `active` = 1 AND category_id = $id ORDER BY ID DESC";
             $cars = Car::where([['active', '=', 1],['category_id', '=', $id]])->select('id', 'title', 'price', 'luggages', 'doors', 'passengers', DB::raw('LEFT(content, 96) AS content'), 'image', 'category_id')->orderBy('id', 'desc')->get();
-            //number of elemnts to paginate
-            // $c = Car::where([['active', '=', 1],['category_id', '=', $id]])->count();
-            //no need to paginate elements of same category
-            $c = 0;
+            //http://127.0.0.1/rental/public/listing/99
+            //trying to find cars for a fake category OR category with no cars
+            if($cars->count() > 0){
+                //number of elemnts to paginate
+                // $c = Car::where([['active', '=', 1],['category_id', '=', $id]])->count();
+                //no need to paginate elements of same category
+                $c = 0;
+            }else{
+                return view("404");
+            }
         }else{
             // $sql = "SELECT `id`, `title`, `price`, `luggages`, `doors`, `passengers`, LEFT (`content`, 96) AS `content`, `image`, `category_id` FROM `cars` WHERE `active` = 1 ORDER BY ID DESC";
             $cars = Car::where('active', 1)->select('id', 'title', 'price', 'luggages', 'doors', 'passengers', DB::raw('LEFT(content, 96) AS content'), 'image', 'category_id')->orderBy('id', 'desc')->paginate(6);
