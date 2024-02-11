@@ -69,14 +69,28 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        // $newHash = password_hash($request->password, PASSWORD_DEFAULT);
+        
         $messages=$this->messages();
         $data = $request->validate([
             'fullName'=>'required|string|max:50',
             'userName'=>'required|string|max:50|unique:users,userName,'.$id,
+            //password field isn't required
+            // 'password'=>'nullable|string|min:8',
             'password'=>'required|string|min:8',
             'email'=>'required|email|unique:users,email,'.$id,
         ], $messages);
-        $data['password'] = Hash::make($data['password']);
+        //password field isn't required
+        // if($request->filled('password')){
+        //     $data['password'] = Hash::make($data['password']);
+        // }else{
+        //     $data['password'] = $request->oldPassword;
+        // }
+        if($data['password'] == $request->oldPassword){
+            $data['password'] = $request->oldPassword;
+        }else{
+            $data['password'] = Hash::make($data['password']);
+        }
         $data['active'] = isset($request->active);
         User::where('id', $id)->update($data);
         return redirect('admin/users')->with('toast_success','Data updated sucssefully');
