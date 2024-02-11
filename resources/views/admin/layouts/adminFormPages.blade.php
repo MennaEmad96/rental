@@ -86,7 +86,5 @@
 	<!-- starrr -->
 	<script src="{{ asset('assets/admin/vendors/starrr/dist/starrr.js') }}"></script>
 
-	@include('sweetalert::alert')
-
 </body>
 </html>

@@ -48,7 +48,7 @@
         <div class="col-5">
         <div class="custom-pagination">
             @for($i = 1; $i <= $totalPages; $i++)
-                <!-- no pafe was selected, then select first -->
+                <!-- no page was selected, then select first -->
                 @if(request()->input('page') == $i || (request()->input('page') == null && $i == 1))
                     <span>{{ $i }}</span>
                 @else
