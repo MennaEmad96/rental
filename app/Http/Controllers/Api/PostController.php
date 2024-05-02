@@ -40,4 +40,20 @@ class PostController extends Controller
             return $this->apiResponse(null, $msg, 404);
         }
     }
+
+    public function store(Request $request){
+
+        //validation
+
+
+        //if validation failed
+        //return $this->apiResponse(null, validator->errors(), 400);
+
+        $post = Car::create($request->all());
+        if($post){
+            return $this->apiResponse(new PostResource($post), $msg, 201);
+        }else{
+            return $this->apiResponse(null, "Post wasn't saved.", 400);
+        }
+    }
 }
