@@ -11,6 +11,9 @@ use App\Http\Controllers\Controller;
 //use resource
 use App\Http\Resources\PostResource;
 
+// validation
+use Illuminate\Support\Facades\Validator;
+
 use App\Models\Car;
 use DB;
 
@@ -43,17 +46,72 @@ class PostController extends Controller
 
     public function store(Request $request){
 
-        //validation
-
-
-        //if validation failed
-        //return $this->apiResponse(null, validator->errors(), 400);
+        $validator = Validator::make($request->all(), [
+            'title'=>'required|string',
+            'price'=>'required|numeric',
+            'luggages'=>'required|numeric',
+            'doors'=>'required|numeric',
+            'passengers'=>'required|numeric',
+            'content'=>'required|string|max:1000',
+            // 'image'=>'required|mimes:png,jpg,jpeg|max:2048',
+            'category_id'=>'required|exists:categories,id',
+        ]);
+ 
+        if ($validator->fails()) {
+            return $this->apiResponse(null, $validator->errors(), 400);
+        }
 
         $post = Car::create($request->all());
         if($post){
-            return $this->apiResponse(new PostResource($post), $msg, 201);
+            return $this->apiResponse(new PostResource($post), "Post saved", 201);
         }else{
             return $this->apiResponse(null, "Post wasn't saved.", 400);
+        }
+    }
+
+    public function update($id, Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'title'=>'required|string',
+            'price'=>'required|numeric',
+            // 'luggages'=>'required|numeric',
+            // 'doors'=>'required|numeric',
+            // 'passengers'=>'required|numeric',
+            // 'content'=>'required|string|max:1000',
+            // 'image'=>'required|mimes:png,jpg,jpeg|max:2048',
+            // 'category_id'=>'required|exists:categories,id',
+        ]);
+ 
+        if ($validator->fails()) {
+            return $this->apiResponse(null, $validator->errors(), 400);
+        }
+
+        $post = Car::find($id);
+
+        if(!$post){
+            return $this->apiResponse(null, "Post wasn't found", 404);
+        }
+
+        $post->update($request->all());
+        if($post){
+            return $this->apiResponse(new PostResource($post), "Post updated", 201);
+        }else{
+            return $this->apiResponse(null, "Post wasn't updated.", 400);
+        }
+    }
+
+    public function destroy($id){
+
+        $post = Car::find($id);
+
+        if(!$post){
+            return $this->apiResponse(null, "Post wasn't found", 404);
+        }
+
+        $post->delete($id);
+
+        if($post){
+            return $this->apiResponse(null, "Post deleted", 200);
         }
     }
 }
