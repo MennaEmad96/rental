@@ -4,8 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\PostController;
-
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\CarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,4 +44,16 @@ Route::group([
     Route::post('/refresh', [AuthController::class, 'refresh']);
     Route::get('/user-profile', [AuthController::class, 'userProfile']);    
 });
+
+//car
+Route::get('cars',[CarController::class,'index'])->name('api.cars');
+Route::get('addCar',[CarController::class,'create'])->name('api.addCar');
+Route::post('storeCar',[CarController::class,'store'])->name('api.storeCar');
+Route::get('editCar/{id}',[CarController::class,'edit'])->name('api.editCar');
+Route::put('updateCar/{id}',[CarController::class,'update'])->name('api.updateCar');
+Route::get('deleteCar/{id}',[CarController::class,'destroy'])->name('api.deleteCar');
+
+
+
+
 

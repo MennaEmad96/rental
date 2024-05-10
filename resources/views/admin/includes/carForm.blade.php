@@ -1,5 +1,5 @@
 <!-- cancel, old image value with add and edit -->
-@if(isset($car))
+{{-- @if(isset($car))
 <form action="{{ route('updateCar', ['id'=>$car->id]) }}" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" enctype="multipart/form-data">
     @method('put')
 @else
@@ -110,3 +110,146 @@
     </div>
 
 </form>
+ --}}
+
+
+
+
+
+
+<!-- cancel, old image value with add and edit -->
+@if(isset($car))
+<form action="{{ route('api.updateCar', ['id'=>$car->id]) }}" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" enctype="multipart/form-data">
+    @method('put')
+@else
+<form action="{{ route('api.storeCar') }}" method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" enctype="multipart/form-data">
+@endif
+    @csrf
+    <div class="item form-group">
+        <label class="col-form-label col-md-3 col-sm-3 label-align" for="title">Title <span class="required">*</span>
+        </label>
+        <div class="col-md-6 col-sm-6 ">
+            <input name="title" value="{{ isset($car) ? $car->title : old('title') }}" type="text" id="title" required="required" class="form-control ">
+        </div>
+
+    </div>
+    <div class="item form-group">
+        <label class="col-form-label col-md-3 col-sm-3 label-align" for="content">Content <span class="required">*</span>
+        </label>
+        <div class="col-md-6 col-sm-6 ">
+            <textarea id="content" name="content" required="required" class="form-control">{{ isset($car) ? $car->content : old('content') }}</textarea>
+        </div>
+
+    </div>
+    <div class="item form-group">
+        <label for="luggage" class="col-form-label col-md-3 col-sm-3 label-align">Luggage <span class="required">*</span></label>
+        <div class="col-md-6 col-sm-6 ">
+            <input id="luggage" class="form-control" type="number" name="luggages" value="{{ isset($car) ? $car->luggages : old('luggages') }}" required="required">
+        </div>
+
+    </div>
+    <div class="item form-group">
+        <label for="doors" class="col-form-label col-md-3 col-sm-3 label-align">Doors <span class="required">*</span></label>
+        <div class="col-md-6 col-sm-6 ">
+            <input id="doors" class="form-control" type="number" name="doors" value="{{ isset($car) ? $car->doors : old('doors') }}" required="required">
+        </div>
+
+    </div>
+    <div class="item form-group">
+        <label for="passengers" class="col-form-label col-md-3 col-sm-3 label-align">Passengers <span class="required">*</span></label>
+        <div class="col-md-6 col-sm-6 ">
+            <input id="passengers" class="form-control" type="number" name="passengers" value="{{ isset($car) ? $car->passengers : old('passengers') }}" required="required">
+        </div>
+
+    </div>
+    <div class="item form-group">
+        <label for="price" class="col-form-label col-md-3 col-sm-3 label-align">Price <span class="required">*</span></label>
+        <div class="col-md-6 col-sm-6 ">
+            <input id="price" class="form-control" type="number" step="0.01" name="price" value="{{ isset($car) ? $car->price : old('price') }}" required="required">
+        </div>
+
+    </div>
+    <div class="item form-group">
+        <label class="col-form-label col-md-3 col-sm-3 label-align">Active</label>
+        <div class="checkbox">
+            <label>
+                <input name="active" type="checkbox" class="flat" {{ (isset($car) && $car->active) || old('active') ? 'checked' : '' }}>
+            </label>
+        </div>
+    </div>
+    <div class="item form-group">
+        <label class="col-form-label col-md-3 col-sm-3 label-align" for="image">Image <span class="required">*</span>
+        </label>
+        <div class="col-md-6 col-sm-6 ">
+            <input type="file" id="image" name="image" value="{{ isset($car) ? $car->image : old('image') }}" {{ isset($car) ? '' : 'required="required"' }} class="form-control">
+            @if(isset($car))
+                <img src="{{ asset('assets/admin/carImages/'.$car->image) }}" alt="" style="width: 300px;">
+                <input type="hidden" name="oldImageName" value="{{ $car->image }}">
+            @endif
+        </div>
+
+    </div>
+    <div class="item form-group">
+        <label class="col-form-label col-md-3 col-sm-3 label-align" for="title">Category <span class="required">*</span>
+        </label>
+        <div class="col-md-6 col-sm-6 ">
+            <select class="form-control" name="category_id" id="" required>
+                @if(!isset($car))
+                <option value="">Select Category</option>
+                @endif
+                @foreach($categories as $category)
+                <option value="{{ $category->id }}" {{ (isset($car) && $car->category_id == $category->id) || old('category_id') == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
+                @endforeach
+            </select>
+        </div>
+
+    </div>
+    <div class="ln_solid"></div>
+    <div class="item form-group">
+        <div class="col-md-6 col-sm-6 offset-md-3">
+            <a href="{{ route('cars') }}" class="btn btn-primary">Cancel</a>
+            <button type="submit" class="btn btn-success">{{ isset($car) ? 'Update' : 'Add' }}</button>
+        </div>
+    </div>
+
+</form>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#demo-form2').submit(function(e) {
+            e.preventDefault();
+
+            var formData = new FormData(this);
+            
+            $.ajax({
+                url: $(this).attr('action'),
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    // Handle success response
+                    console.log(response);
+                    // Redirect or show success message
+                    window.location.href = "{{ route('api.cars') }}"; // Redirect to success page
+                },
+                error: function(xhr, status, error) {
+                    // Handle error response
+                    console.error(xhr.responseText);
+                    var errors = xhr.responseJSON.errors;
+                    if (errors) {
+                        $.each(errors, function(key, value) {
+                            // Display error messages next to corresponding form fields
+                            $('#' + key).closest('.form-group').find('.text-danger').remove(); // Remove any existing error messages
+                            $('#' + key).closest('.form-group').append('<div class="text-danger">' + value[0] + '</div>'); // Append error message
+                        });
+                    } else {
+                        // Display generic error message
+                        alert('An error occurred while submitting the form.');
+                    }
+                }
+            });
+        });
+    });
+</script>
