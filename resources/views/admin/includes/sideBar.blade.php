@@ -12,7 +12,7 @@
     </div>
     <div class="profile_info">
         <span>Welcome,</span>
-        <h2>{{ Auth::user()->fullName }}</h2>
+        <h2>{{-- {{ Auth::user()->fullName }} --}}</h2>
     </div>
     </div>
     <!-- /menu profile quick info -->
@@ -30,33 +30,10 @@
                     <li><a href="{{route ('addUser') }}">Add User</a></li>
                 </ul>
             </li>
-            <li><a><i class="fa fa-edit"></i> Categories <span class="fa fa-chevron-down"></span></a>
+            <li><a><i class="fa fa-desktop"></i> Posts <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
-                    <li><a href="{{route ('categories') }}">Categories List</a></li>
-                    <li><a href="{{route ('addCategory') }}">Add Category</a></li>
-                </ul>
-            </li>
-            <li><a><i class="fa fa-desktop"></i> Cars <span class="fa fa-chevron-down"></span></a>
-                <ul class="nav child_menu">
-                    <li><a href="{{route ('cars') }}">Cars List</a></li>
-                    <li><a href="{{route ('addCar') }}">Add Car</a></li>
-                </ul>
-            </li>
-            <li><a><i class="fa fa-desktop"></i> Testimonials <span class="fa fa-chevron-down"></span></a>
-                <ul class="nav child_menu">
-                    <li><a href="{{route ('allTestimonials') }}">Testimonials List</a></li>
-                    <li><a href="{{route ('addTestimonial') }}">Add Testimonials</a></li>
-                </ul>
-            </li>
-            <li><a><i class="fa fa-desktop"></i> Teams <span class="fa fa-chevron-down"></span></a>
-                <ul class="nav child_menu">
-                    <li><a href="{{route ('teams') }}">Teams List</a></li>
-                    <li><a href="{{route ('addTeam') }}">Add Team</a></li>
-                </ul>
-            </li>
-            <li><a><i class="fa fa-desktop"></i> Messages <span class="fa fa-chevron-down"></span></a>
-                <ul class="nav child_menu">
-                    <li><a href="{{ route('messages') }}">Messages</a></li>
+                    <li><a href="{{route ('posts') }}">Posts List</a></li>
+                    <li><a href="{{route ('addPost') }}">Add Post</a></li>
                 </ul>
             </li>
         </ul>

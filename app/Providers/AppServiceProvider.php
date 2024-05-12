@@ -4,10 +4,6 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-//show database content in all pages
-use Illuminate\Support\Facades\View;
-use App\Models\Message;
-
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -26,15 +22,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //Or write the code here without extar files
-        View::composer('admin.includes.topNav', function ($view) {
-            $unreadMessagesCount = Message::where('isRead', 0)->count();
-            $unreadMessages = Message::where('isRead', 0)->orderBy('id', 'desc')->take(3)->get();
-            //session
-            $view->with([
-                'unreadMessagesCount' => $unreadMessagesCount,
-                'unreadMessages' => $unreadMessages,
-            ]);
-        });
+        // 
     }
 }
