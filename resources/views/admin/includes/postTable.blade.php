@@ -18,7 +18,7 @@
                     <td>{{ $post->title }}</td>
                     <td>{{ $post->content }}</td>
                     <td>{{ $post->active ? 'Yes' : 'No' }}</td>
-                    <td><a href="{{ route('showPost', ['id'=>$post->id]) }}"><img src="{{ asset('assets/admin/images/show.png') }}" alt="Show"></a></td>
+                    <td><a href="{{ route('showPost', ['id'=>$post->id]) }}"><img src="{{ asset('assets/admin/images/show.png') }}" alt="Show" style="width: 32px; height: 32px;"></a></td>
                     <td><a href="{{ route('editPost', ['id'=>$post->id]) }}"><img src="{{ asset('assets/admin/images/edit.png') }}" alt="Edit"></a></td>
                     <td><a onclick="return confirm('Are you sure?')" href="{{ route('deletePost', ['id'=>$post->id]) }}"><img src="{{ asset('assets/admin/images/delete.png') }}" alt="Delete"></a></td>
                 </tr>
